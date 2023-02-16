@@ -1,1 +1,36 @@
+import csv
+import math
+import matplotlib.pyplot as plt
 
+
+
+with open("my_file", newline='', encoding='utf-8-sig') as csvfile:  #replace "my_file" with your file
+    reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    my_list = []
+    for row in reader:
+        my_list.append(row)
+
+for element in my_list:
+    value = float(element[0])  # convert the element to a float 
+    result = 10 * math.log(value / 10**-12, 10) # apply the formula using the converted value
+    print(result)  # print the result or store it in a list
+
+
+with open("my_file", newline='', encoding='utf-8-sig') as csvfile:  #replace "my_file" with your file
+    reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    my_list = []
+    for row in reader:
+        my_list.append(row)
+
+x_values = [0.2 * i for i in range(len(my_list))]  # create a list of x values
+y_values = []  # create an empty list for the y values
+
+for element in my_list:
+    value = float(element[0])  # convert the element to a float
+    result = 10 * math.log(value / 10**-12, 10)  # apply the formula using the converted value
+    y_values.append(result)  # add the result to the y_values list
+
+plt.plot(x_values, y_values)  # plot the x and y values
+plt.xlabel('x values')
+plt.ylabel('y values')
+plt.show()  # display the plot
